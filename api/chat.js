@@ -35,7 +35,7 @@ export default async function handler(req) {
     const upstream = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01' },
-      body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens, system, messages }),
+      body: JSON.stringify({ model: 'claude-sonnet-4-5-20251001', max_tokens, system, messages }),
     });
     const data = await upstream.json();
     if (!upstream.ok) return new Response(JSON.stringify({ error: data.error?.message || 'Error upstream' }), { status: upstream.status, headers: { ...cors, 'Content-Type': 'application/json' } });
